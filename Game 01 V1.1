@@ -1,0 +1,136 @@
+import random
+
+board = []
+
+cat = []
+
+dog = []
+
+for x in range(0, 1):
+    board.append("0" + "1")
+
+def print_board(board):
+    for row in board:
+     print(" ".join(row))
+
+print_board(board)
+points = 10
+win_count = 0
+lose_count = 0
+count = 0
+for turn in range(1000):
+    print ("Turn", turn + 1)
+    chance = random.randint(1, 100)
+    amount = random.randint(1,points)
+    print(print_board(board))
+
+    if amount > points:
+      print("Value insufficient")
+
+    elif amount == 0:
+      print("You Have Ran Out of Points")
+      break
+
+      #guess_letter = int(input("0 or 1: "))
+
+      #if guess_letter not in range(2):
+          #print("Please Enter A Valid Choice")
+    else:
+      if points == amount or points == amount - 5:
+          points += amount
+          win_count += 1
+          count += 1
+          cat.append(amount)
+          print("amount: ")
+          print(amount)
+          print("Congratulation! You have won!")
+          print("Your Points: ")
+          print(points)
+          print("win count: ")
+          print(win_count)
+          print("lose count: ")
+          print(lose_count)
+
+
+      elif points >= 10000:
+          points -= amount
+          lose_count += 1
+          count += 1
+          dog.append(amount)
+          print("amount: ")
+          print(amount)
+          print("Sorry, You Lose")
+          print("Your Points: ")
+          print(points)
+          print("win count: ")
+          print(win_count)
+          print("lose count: ")
+          print(lose_count)
+
+
+      else:
+          if chance <= 75:
+            points += amount
+            win_count += 1
+            count += 1
+            cat.append(amount)
+            print("amount: ")
+            print(amount)
+            print ("Congratulation! You have won!")
+            print("Your Points: ")
+            print(points)
+            print("win count: ")
+            print(win_count)
+            print("lose count: ")
+            print(lose_count)
+
+
+          elif chance > 75:
+            points -= amount
+            lose_count += 1
+            count += 1
+            dog.append(amount)
+            print("amount: ")
+            print(amount)
+            print("Sorry , You Lost")
+            print("Your Points: ")
+            print(points)
+            print("win count: ")
+            print(win_count)
+            print("lose count: ")
+            print(lose_count)
+cat.sort(reverse=True)
+dog.sort(reverse=True)
+print(cat)
+print(dog)
+import texttable as tt
+tab = tt.Texttable()
+headings = ['cat']
+tab.header(headings)
+
+for row in zip(cat[:100]):
+    tab.add_row(row)
+
+
+s = tab.draw()
+with open('7777.txt', 'a') as f:
+    print(s, file=f)
+
+tab1 = tt.Texttable()
+headings = ['dog']
+tab1.header(headings)
+
+for row in zip(dog[:100]):
+    tab1.add_row(row)
+
+s1 = tab1.draw()
+with open('7778.txt', 'a') as f:
+    print(s1, file=f)
+
+
+with open('7779.txt', 'a') as f:
+    print("win count: ",win_count,"lose count: ",lose_count,"Points: ", points, file=f)
+
+while count <= 1001:
+    count += 1
+
