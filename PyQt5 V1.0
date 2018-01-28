@@ -1,0 +1,69 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'exedxe.ui'
+#
+# Created by: PyQt5 UI code generator 5.10
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(400, 300)
+        self.pic0 = QtWidgets.QTextEdit(Dialog)
+        self.pic0.setGeometry(QtCore.QRect(0, 0, 104, 71))
+        self.pic0.setObjectName("pic0")
+        self.pic1 = QtWidgets.QTextEdit(Dialog)
+        self.pic1.setGeometry(QtCore.QRect(100, 0, 104, 71))
+        self.pic1.setObjectName("pic1")
+        self.PointsNum = QtWidgets.QLCDNumber(Dialog)
+        self.PointsNum.setGeometry(QtCore.QRect(90, 100, 71, 31))
+        self.PointsNum.setProperty("intValue", 10)
+        self.PointsNum.setObjectName("PointsNum")
+        self.AmountNum = QtWidgets.QLineEdit(Dialog)
+        self.AmountNum.setGeometry(QtCore.QRect(90, 140, 71, 31))
+        self.AmountNum.setObjectName("AmountNum")
+        self.Points = QtWidgets.QLabel(Dialog)
+        self.Points.setGeometry(QtCore.QRect(0, 110, 47, 13))
+        self.Points.setObjectName("Points")
+        self.Amount = QtWidgets.QLabel(Dialog)
+        self.Amount.setGeometry(QtCore.QRect(0, 150, 81, 16))
+        self.Amount.setObjectName("Amount")
+        self.PB0 = QtWidgets.QPushButton(Dialog)
+        self.PB0.setGeometry(QtCore.QRect(0, 190, 75, 23))
+        self.PB0.setObjectName("PB0")
+        self.PB1 = QtWidgets.QPushButton(Dialog)
+        self.PB1.setGeometry(QtCore.QRect(70, 190, 75, 23))
+        self.PB1.setObjectName("PB1")
+        self.Exit = QtWidgets.QPushButton(Dialog)
+        self.Exit.setGeometry(QtCore.QRect(320, 270, 75, 23))
+        self.Exit.setObjectName("Exit")
+
+        self.retranslateUi(Dialog)
+        self.Exit.clicked.connect(Dialog.close)
+        self.PB0.clicked.connect(self.btn_clk)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def btn_clk(self):
+      self.PointsNum.Display += 1
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.Points.setText(_translate("Dialog", "Points:"))
+        self.Amount.setText(_translate("Dialog", "Amount to Bet:"))
+        self.PB0.setText(_translate("Dialog", "0"))
+        self.PB1.setText(_translate("Dialog", "1"))
+        self.Exit.setText(_translate("Dialog", "Exit"))
+
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_Dialog()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
+
